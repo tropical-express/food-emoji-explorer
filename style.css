@@ -1,0 +1,101 @@
+/* General */
+body {
+  font-family: sans-serif;
+  background: #fafafa;
+  margin: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+/* Search */
+#search {
+  padding: 10px;
+  width: 90%;
+  max-width: 400px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Emoji Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Emoji styling */
+.emoji {
+  font-size: 2.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.emoji:hover {
+  transform: scale(1.25);
+}
+
+/* Tooltip */
+.tooltip {
+  visibility: hidden;
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.emoji:hover .tooltip {
+  visibility: visible;
+}
+
+/* Copy Animation */
+.emoji.copied::after {
+  content: "Copied!";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+/* Recently Copied Bar */
+.recent-copied {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.recent-copied .emoji {
+  font-size: 2rem;
+  transition: transform 0.2s;
+}
+
+.recent-copied .emoji:hover {
+  transform: scale(1.25);
+}
